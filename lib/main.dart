@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:to_do_app/models/task.dart';
 import 'package:to_do_app/screens/home_screen.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(TaskAdapter()); // Register the adapter
+  await Hive.openBox<Task>('tasks'); // Open a box for tasks
   runApp(const MyApp());
 }
 
