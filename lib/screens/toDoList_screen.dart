@@ -4,13 +4,16 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 class TodolistScreen extends StatelessWidget {
   final String taskName;
   final bool isCompleted;
-  Function(bool?)? onChanged;
+  final Function(bool?)? onChanged;
+  // final VoidCallback onDelete;
+  final Function(BuildContext)? onDelete;
 
   TodolistScreen(
       {super.key,
       required this.taskName,
       required this.isCompleted,
-      required this.onChanged});
+      required this.onChanged,
+      required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +22,20 @@ class TodolistScreen extends StatelessWidget {
       padding: const EdgeInsets.only(top: 24.0, left: 24.0, right: 24.0),
       child: Slidable(
         endActionPane: ActionPane(
-            motion: StretchMotion(),
-            children: [SlidableAction(
-              onPressed: deleteTask,
+          motion: StretchMotion(),
+          children: [
+            SlidableAction(
+              onPressed: (context) {
+                if (onDelete != null) {
+                  onDelete!(context);
+                }
+              },
               icon: Icons.delete,
               backgroundColor: Colors.red,
-            ),],),
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ],
+        ),
         child: Container(
           padding: const EdgeInsets.all(18.0),
           decoration: BoxDecoration(

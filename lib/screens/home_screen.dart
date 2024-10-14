@@ -79,6 +79,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  void deleteTask(int index) {
+    setState(() {
+      todoList.removeAt(index);
+    });
+  }
+
   @override
   void dispose() {
     _taskNameController.dispose(); // Dispose of the controller
@@ -106,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
             taskName: todoList[index][0],
             isCompleted: todoList[index][1],
             onChanged: (value) => checkBox(value, index),
+            onDelete: (context) => deleteTask(index),
           );
         },
       ),
