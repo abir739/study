@@ -35,9 +35,25 @@ class _HomeScreenState extends State<HomeScreen> {
         onTabChange: (index) => bottomnavBar(index),
       ),
       appBar: AppBar(
-        // backgroundColor: Colors.lightBlue,
-        title: const Center(child: Text("S H O P  A P P")),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Builder(builder: (context) {
+          return IconButton(
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              icon: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              ));
+        }),
+        title: const Center(
+            child: Text(
+          "S H O P  A P P",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        )),
       ),
+      drawer: Drawer(),
       body: _pages[_selectedIndex],
     );
   }
