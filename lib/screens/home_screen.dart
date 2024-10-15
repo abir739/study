@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const ShopeScreen(),
+    ShopeScreen(),
     const FavoriteScreen(),
     const CategoryScreen(),
     const CartScreen(),
@@ -53,7 +53,116 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(fontWeight: FontWeight.bold),
         )),
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+          backgroundColor: Colors.blue[900],
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  DrawerHeader(
+                    child: Image.asset(
+                      'lib/images/Shop App.png',
+                      color: Colors.white,
+                    ),
+                  ),
+                  const Padding(
+                      padding: EdgeInsets.only(top: 27, left: 25),
+                      child: ListTile(
+                        leading: Icon(
+                          Icons.home,
+                          color: Colors.white,
+                          size: 26,
+                        ),
+                        title: Text(
+                          'Home',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      )),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 27, left: 25),
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                        size: 26,
+                      ),
+                      title: Text(
+                        'Settings',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        'Privacy and logout',
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 27, left: 25),
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.support,
+                        color: Colors.white,
+                        size: 26,
+                      ),
+                      title: Text(
+                        'Help & Support',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        'Help center and help legal terms',
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 27, left: 25),
+                    child: ListTile(
+                      leading: Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                        size: 26,
+                      ),
+                      title: Text(
+                        'FAQ',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        'Questions and Answe',
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 27, left: 25),
+                child: ListTile(
+                  leading: Icon(
+                    Icons.logout,
+                    color: Colors.white,
+                    size: 26,
+                  ),
+                  title: Text(
+                    'Sign Out',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ],
+          )),
       body: _pages[_selectedIndex],
     );
   }
