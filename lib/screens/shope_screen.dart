@@ -70,6 +70,7 @@ class _ShopeScreenState extends State<ShopeScreen> {
                 Expanded(
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
+                        itemCount: value.getProductsList().length,
                         itemBuilder: (context, index) {
                           Product product = value.getProductsList()[index];
                           return ProductCard(

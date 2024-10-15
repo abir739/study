@@ -16,10 +16,12 @@ class _ProductCardState extends State<ProductCard> {
   void addProductToShopList(Product product) {
     Provider.of<UserCart>(context, listen: false).addProductToList(product);
 
-    showDialog(context: context, builder: (context) => const AlertDialog(
-      title: Text('Successfully added !'),
-      content: Text('Check your List'),
-    ));
+    showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+              title: Text('Successfully added !'),
+              content: Text('Check your List'),
+            ));
   }
 
   @override
@@ -95,7 +97,7 @@ class _ProductCardState extends State<ProductCard> {
                 ),
               ),
               GestureDetector(
-                onTap: () => addProductToShopList,
+                onTap: () => addProductToShopList(widget.product),
                 child: Container(
                   padding: const EdgeInsets.all(18),
                   decoration: const BoxDecoration(
