@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/models/user_cart_model.dart';
 import 'package:shop_app/screens/intro_screen.dart';
 
 void main() {
@@ -10,10 +12,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: Colors.blue),
-      home: const IntroScreen(),
+    // return MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   theme: ThemeData(primaryColor: Colors.blue),
+    //   home: const IntroScreen(),
+    // );
+
+    return ChangeNotifierProvider(
+      create: (context) => UserCart(),
+      builder: (context, child) => const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: IntroScreen(),
+      ),
     );
   }
 }

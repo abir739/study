@@ -12,7 +12,6 @@ class IntroScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 219, 224, 226),
-
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -29,7 +28,7 @@ class IntroScreen extends StatelessWidget {
                 height: 60,
               ),
               const Text(
-                'Sopping any Time',
+                'Shopping any Time',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
               ),
               const SizedBox(
