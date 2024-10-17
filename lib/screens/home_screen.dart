@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/Themes/theme_provider.dart';
 import 'package:shop_app/components/nav_bar.dart';
 import 'package:shop_app/screens/cart_screen.dart';
 import 'package:shop_app/screens/category_screen.dart';
@@ -30,7 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 219, 224, 226),
+      backgroundColor: Theme.of(context).colorScheme.background,
+      // backgroundColor: const Color.fromARGB(255, 219, 224, 226),
       bottomNavigationBar: BottomNavBar(
         onTabChange: (index) => bottomnavBar(index),
       ),
@@ -52,6 +55,14 @@ class _HomeScreenState extends State<HomeScreen> {
           "S H O P  A P P",
           style: TextStyle(fontWeight: FontWeight.bold),
         )),
+        actions: <Widget>[
+          IconButton(
+              onPressed: () {
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .toggleTheme();
+              },
+              icon: const Icon(Icons.wb_sunny))
+        ],
       ),
       drawer: Drawer(
           backgroundColor: Colors.blue[900],

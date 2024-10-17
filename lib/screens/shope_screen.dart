@@ -21,19 +21,25 @@ class _ShopeScreenState extends State<ShopeScreen> {
                   padding: const EdgeInsets.all(20),
                   margin: const EdgeInsets.symmetric(horizontal: 25),
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      // color: Colors.white,
+                      color: Theme.of(context).colorScheme.primary,
                       borderRadius: BorderRadius.circular(10)),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'Search...',
-                        style: TextStyle(fontSize: 18, color: Colors.grey),
+                        style: TextStyle(
+                          fontSize: 18,
+                          // color: Colors.grey
+                          color: Theme.of(context).colorScheme.secondary,
+                        ),
                       ),
                       Icon(
                         Icons.search,
                         size: 25,
-                        color: Colors.grey,
+                        // color: Colors.grey,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                     ],
                   ),
@@ -50,17 +56,17 @@ class _ShopeScreenState extends State<ShopeScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
+                      Text(
                         'Most Popular',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Theme.of(context).colorScheme.primary,
                             fontSize: 20),
                       ),
                       Text(
                         'see all',
                         style: TextStyle(
-                            color: Colors.blue[900],
+                            color: Theme.of(context).colorScheme.primary,
                             fontWeight: FontWeight.w600,
                             fontSize: 16),
                       )
