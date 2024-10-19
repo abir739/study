@@ -24,10 +24,10 @@ class _ShopScreenState extends State<ShopScreen> {
           ),
         ),
         actions: <Widget>[
-          IconButton(onPressed: () {}, icon: Icon(Icons.wb_sunny))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.wb_sunny))
         ],
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: Text('shop screen'),
     );
   }
