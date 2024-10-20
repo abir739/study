@@ -1,42 +1,25 @@
-// product for sale filtred by category
-
-// user products
-
-// get all categories List
-
-// get all products List
-
-// get user cart: user products
-
-//add item to cart
-
-// delete item from cart
-
 import 'package:ecommerce_app/models/category_model.dart';
 import 'package:ecommerce_app/models/product_model.dart';
 
 class ShopModel {
   final List<CategoryModel> _categoryList = [
     CategoryModel(
-        id: 'c1', image: 'lib/images/men.jpg', name: 'Men', productList: []),
+        id: 'c1', image: 'lib/images/skirts.png', name: 'Men', productList: []),
     CategoryModel(
         id: 'c2',
-        image: 'lib/images/women.webp',
+        image: 'lib/images/women.jpg',
         name: 'Women',
         productList: []),
     CategoryModel(
-        id: 'c3',
-        image: 'lib/images/child.avif',
-        name: 'Child',
-        productList: []),
+        id: 'c3', image: 'lib/images/bags.png', name: 'Bags', productList: []),
     CategoryModel(
         id: 'c4',
-        image: 'lib/images/shoes.webp',
+        image: 'lib/images/shoes.png',
         name: 'Shoes',
         productList: []),
     CategoryModel(
         id: 'c5',
-        image: 'lib/images/robe.jpeg',
+        image: 'lib/images/clothes.jpg',
         name: 'Robes',
         productList: []),
   ];
@@ -47,30 +30,34 @@ class ShopModel {
         name: 'Men\'s Shirt',
         description: 'A stylish shirt',
         price: '29.99',
-        image: 'lib/images/shirt.jpg',
-        categoryId: '1'),
+        image: 'lib/images/skirts.png',
+        categoryId: 'c1'),
     ProductModel(
         id: 'p2',
         name: 'Women\'s Dress',
         description: 'A beautiful dress',
         price: '49.99',
-        image: 'lib/images/dress.jpg',
-        categoryId: '2'),
+        image: 'lib/images/women.jpg',
+        categoryId: 'c2'),
     ProductModel(
         id: 'p3',
         name: 'Men\'s Shirt',
         description: 'A stylish shirt',
         price: '29.99',
-        image: 'lib/images/shirt.jpg',
-        categoryId: '1'),
+        image: 'lib/images/skirts.png',
+        categoryId: 'c1'),
     ProductModel(
         id: 'p4',
         name: 'Women\'s Dress',
         description: 'A beautiful dress',
         price: '49.99',
-        image: 'lib/images/dress.jpg',
-        categoryId: '2'),
+        image: 'lib/images/clothes.jpg',
+        categoryId: 'c2'),
   ];
+
+  ShopModel() {
+    _populateProducts();
+  }
 
   // Assign products to categories based on categoryId
   void _populateProducts() {
@@ -85,15 +72,18 @@ class ShopModel {
     }
   }
 
-// get Categories
-
+  // Get Categories
   List<CategoryModel> getCategories() {
     return _categoryList;
   }
 
-// get products by category
-
+  // Get products by category
   List<ProductModel> getProductsByCategory(String categoryId) {
     return _categoryList.firstWhere((cat) => cat.id == categoryId).productList;
+  }
+
+  // Get all products
+  List<ProductModel> getAllProducts() {
+    return _productList;
   }
 }
