@@ -44,85 +44,82 @@ class _ShopScreenState extends State<ShopScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
+              height: 100,
               child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: shop.getCategories().length,
-                  itemBuilder: (context, index) {
-                    final category = shop.getCategories()[index];
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedCategoryId = category.id;
-                        });
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                        width: 70,
-                        height: 70,
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 80,
-                              height: 80,
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                                color: Colors.white,
-                              ),
-                              child: CircleAvatar(
-                                radius: 50,
-                                backgroundImage: AssetImage(category.image),
-                              ),
+                scrollDirection: Axis.horizontal,
+                itemCount: shop.getCategories().length,
+                itemBuilder: (context, index) {
+                  final category = shop.getCategories()[index];
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectedCategoryId = category.id;
+                      });
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: 60,
+                            height: 60,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
                             ),
-                            const SizedBox(
-                              height: 3,
+                            child: CircleAvatar(
+                              backgroundImage: AssetImage(category.image),
                             ),
-                            Text(
-                              category.name,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
+                          ),
+                          const SizedBox(height: 5),
+                          Text(
+                            category.name,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    );
-                  }),
+                    ),
+                  );
+                },
+              ),
             ),
+            const SizedBox(height: 20),
             const Text(
               'Our Products Items',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
-            // Expanded(
-            //     child: ListView.builder(
-            //         itemCount: products.length,
-            //         itemBuilder: (context, index) {
-            //           final product = products[index];
-            //           return ListTile(
-            //             leading: Image.asset(product.image),
-            //             title: Text(product.name),
-            //             subtitle: Text(product.description),
-            //           );
-            //         })),
+            const SizedBox(height: 10),
             Expanded(
-                child: GroupGridView(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
-              sectionCount: 1,
-              itemInSectionCount: (section) => products.length,
-              itemInSectionBuilder: (context, indexPath) {
-                final product = products[indexPath.index];
-                // return ListTile(
-                //   leading: Image.asset(product.image),
-                //   title: Text(product.name),
-                //   subtitle: Text(product.description),
-                // );
-                return MyListCard(
+              child: GroupGridView(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
+                sectionCount: 1,
+                itemInSectionCount: (section) => products.length,
+                itemInSectionBuilder: (context, indexPath) {
+                  final product = products[indexPath.index];
+                  return MyListCard(
                     description: product.description,
                     image: product.image,
                     name: product.name,
-                    price: product.price);
-              },
-            ))
+                    price: product.price,
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
