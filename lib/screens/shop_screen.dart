@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/componenets/drawer.dart';
 import 'package:ecommerce_app/componenets/my_List_card.dart';
+import 'package:ecommerce_app/models/product_model.dart';
 import 'package:ecommerce_app/models/shop_model.dart';
 import 'package:flutter/material.dart';
 import 'package:group_grid_view/group_grid_view.dart';
@@ -69,7 +70,7 @@ class _ShopScreenState extends State<ShopScreen> {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
+                                  spreadRadius: 3,
                                   blurRadius: 5,
                                   offset: const Offset(0, 3),
                                 ),
@@ -112,11 +113,14 @@ class _ShopScreenState extends State<ShopScreen> {
                 itemInSectionBuilder: (context, indexPath) {
                   final product = products[indexPath.index];
                   return MyListCard(
-                    description: product.description,
-                    image: product.image,
-                    name: product.name,
-                    price: product.price,
-                  );
+                      description: product.description,
+                      image: product.image,
+                      name: product.name,
+                      price: product.price,
+                      onTap: () {
+                        shop.addProductToCart(product);
+                        _showAddToCartDialog(product);
+                      });
                 },
               ),
             ),
@@ -124,5 +128,34 @@ class _ShopScreenState extends State<ShopScreen> {
         ),
       ),
     );
+  }
+
+  void _showAddToCartDialog(ProductModel product) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            icon: const Icon(
+              Icons.check_circle,
+              size: 60,
+            ),
+            iconColor: Colors.green,
+            title: const Text('Product Added to Cart'),
+            content: Text('${product.name} has been added to your cart.'),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    'OK',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                        fontSize: 18),
+                  ))
+            ],
+          );
+        });
   }
 }

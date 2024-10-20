@@ -1,7 +1,8 @@
 import 'package:ecommerce_app/models/category_model.dart';
 import 'package:ecommerce_app/models/product_model.dart';
+import 'package:flutter/material.dart';
 
-class ShopModel {
+class ShopModel extends ChangeNotifier {
   final List<CategoryModel> _categoryList = [
     CategoryModel(
         id: 'c1', image: 'lib/images/skirts.png', name: 'Men', productList: []),
@@ -66,8 +67,10 @@ class ShopModel {
           (cat) => cat.id == product.categoryId,
           orElse: () =>
               CategoryModel(id: '', name: '', image: '', productList: []));
+      notifyListeners();
       if (category.id.isNotEmpty) {
         category.productList.add(product);
+        notifyListeners();
       }
     }
   }
@@ -85,5 +88,19 @@ class ShopModel {
   // Get all products
   List<ProductModel> getAllProducts() {
     return _productList;
+  }
+
+// Get products in the cart
+  List<ProductModel> _productsInCart = [];
+// add product to the cart
+  void addProductToCart(ProductModel item) {
+    _productsInCart.add(item);
+    notifyListeners();
+  }
+
+//remove product from the cart
+  void deleteProductFromCart(ProductModel item) {
+    _productsInCart.remove(item);
+    notifyListeners();
   }
 }

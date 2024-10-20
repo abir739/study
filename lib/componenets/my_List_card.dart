@@ -5,6 +5,7 @@ class MyListCard extends StatelessWidget {
   final String name;
   final String description;
   final String price;
+  final void Function()? onTap;
 
   const MyListCard({
     super.key,
@@ -12,6 +13,7 @@ class MyListCard extends StatelessWidget {
     required this.image,
     required this.name,
     required this.price,
+    required this.onTap
   });
 
   @override
@@ -22,7 +24,7 @@ class MyListCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.only(left: 10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -54,13 +56,32 @@ class MyListCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            Text(
-              price,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).colorScheme.inversePrimary,
-                fontSize: 16,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  price,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                    fontSize: 16,
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10)),
+                      color: Theme.of(context).colorScheme.inversePrimary),
+                  child: IconButton(
+                      onPressed: onTap,
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 25,
+                      )),
+                )
+              ],
             ),
           ],
         ),
