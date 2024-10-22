@@ -37,17 +37,17 @@ class MyDrawer extends StatelessWidget {
                   ),
                   onTap: () => Navigator.pop(context),
                 ),
-                ListTile(
-                  leading: Icon(
-                    Icons.favorite,
-                    color: Theme.of(context).colorScheme.inversePrimary,
-                  ),
-                  title: const Text(
-                    'F A V O R I T E S',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  onTap: () => Navigator.pop(context),
-                ),
+                // ListTile(
+                //   leading: Icon(
+                //     Icons.favorite,
+                //     color: Theme.of(context).colorScheme.inversePrimary,
+                //   ),
+                //   title: const Text(
+                //     'F A V O R I T E S',
+                //     style: TextStyle(fontWeight: FontWeight.bold),
+                //   ),
+                //   onTap: () => Navigator.pop(context),
+                // ),
                 ListTile(
                     leading: Icon(
                       Icons.shopping_bag,
@@ -86,7 +86,7 @@ class MyDrawer extends StatelessWidget {
                     color: Colors.red,
                   ),
                   title: const Text(
-                    'S I G N O U T',
+                    'L O G O U T',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, color: Colors.red),
                   ),
