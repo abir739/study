@@ -2,8 +2,10 @@ import 'package:ecommerce_app/componenets/drawer.dart';
 import 'package:ecommerce_app/componenets/my_List_card.dart';
 import 'package:ecommerce_app/models/product_model.dart';
 import 'package:ecommerce_app/models/shop_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:group_grid_view/group_grid_view.dart';
+import 'package:provider/provider.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
@@ -15,6 +17,10 @@ class ShopScreen extends StatefulWidget {
 class _ShopScreenState extends State<ShopScreen> {
   final ShopModel shop = ShopModel();
   String? selectedCategoryId;
+
+  void addProductToShopList(ProductModel product) {
+    Provider.of<ShopModel>(context, listen: false).addProductToCart(product);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +124,7 @@ class _ShopScreenState extends State<ShopScreen> {
                       name: product.name,
                       price: product.price,
                       onTap: () {
-                        shop.addProductToCart(product);
+                        addProductToShopList(product);
                         _showAddToCartDialog(product);
                       });
                 },

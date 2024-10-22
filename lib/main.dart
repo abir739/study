@@ -7,8 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-      create: (contexte) => ShopModel(), child: const MyApp()));
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ShopModel(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

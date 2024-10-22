@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/models/category_model.dart';
 import 'package:ecommerce_app/models/product_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class ShopModel extends ChangeNotifier {
@@ -91,16 +92,24 @@ class ShopModel extends ChangeNotifier {
   }
 
 // Get products in the cart
-  List<ProductModel> _productsInCart = [];
+  List<ProductModel> cartProducts = [];
+
+  List<ProductModel> getMyCartProducts() {
+    return cartProducts;
+  }
+
 // add product to the cart
   void addProductToCart(ProductModel item) {
-    _productsInCart.add(item);
+    cartProducts.add(item);
     notifyListeners();
+    if (kDebugMode) {
+      print('Added to cart: ${item.name}');
+    }
   }
 
 //remove product from the cart
   void deleteProductFromCart(ProductModel item) {
-    _productsInCart.remove(item);
+    cartProducts.remove(item);
     notifyListeners();
   }
 }
